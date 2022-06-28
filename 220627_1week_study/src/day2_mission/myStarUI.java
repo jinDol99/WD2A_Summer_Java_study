@@ -371,7 +371,7 @@ class myStarUI extends JFrame implements Runnable, MouseListener, ActionListener
 				cb.addItem(clan.mainBItem.elementAt(i));
 		}
 		
-		if(me.getSource()==U_BU[4]){
+		if(me.getSource()==U_BU[1]){
 			job=0;
 			U_desc.setText(clan.workerdesc);
 			U_face.setIcon(clan.workerface);
@@ -387,28 +387,28 @@ class myStarUI extends JFrame implements Runnable, MouseListener, ActionListener
 	}
 		
 	public void mouseEntered(MouseEvent me){
-		for(int i=0;i<7;i++){				
+		for(int i=0;i<2;i++){				
 			if(me.getSource()==U_BU[i]){
 				U_BU[i].setBorder(new BevelBorder(BevelBorder.RAISED));
 			}
 		}
 	}
 	public void mouseExited(MouseEvent me){
-		for(int i=0;i<7;i++){
+		for(int i=0;i<2;i++){
 			if(me.getSource()==U_BU[i]){
 				U_BU[i].setBorder(null);
 			}
 		}
 	}
 	public void mousePressed(MouseEvent me){
-		for(int i=0;i<7;i++){			
+		for(int i=0;i<2;i++){			
 			if(me.getSource()==U_BU[i]){
 				U_BU[i].setBorder(new BevelBorder(BevelBorder.LOWERED));
 			}
 		}
 	}
 	public void mouseReleased(MouseEvent me){
-		for(int i=0;i<7;i++){			
+		for(int i=0;i<2;i++){			
 			if(me.getSource()==U_BU[i]){
 				U_BU[i].setBorder(new BevelBorder(BevelBorder.RAISED));
 			}
