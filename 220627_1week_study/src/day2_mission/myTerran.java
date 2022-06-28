@@ -48,7 +48,6 @@ class myTerran extends myTribe {
 		workerItem.addElement("미네랄");
 		workerItem.addElement("가스");
 		workerItem.addElement("CommandCenter");
-		workerItem.addElement("공격하기");
 		
 		mainBVT.addElement(new myCommandCenter(ui)); //최초 커맨드 건물 기본 하나
 		
