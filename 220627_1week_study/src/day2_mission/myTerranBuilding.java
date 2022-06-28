@@ -1,4 +1,5 @@
 package day2_mission;
+import java.util.Vector;
 
 abstract class myTerranBuilding extends myStarObject implements myIStarBuilding  {
 	myTerranBuilding(myStarUI ui) {
