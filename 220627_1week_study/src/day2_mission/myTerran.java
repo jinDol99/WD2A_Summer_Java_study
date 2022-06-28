@@ -34,25 +34,25 @@ class myTerran extends myTribe {
 		workerface =new ImageIcon("img/terranworkerface.jpg");
 		
 		///////////건물 및 유닛 아이템(행동)정보 초기화///////////	
-		mainBVT = new Vector();
-		workerVT = new Vector();
+		ArrayList mainBVT = new ArrayList();
+		ArrayList workerVT = new ArrayList();
 		
-		mainBVT = new Vector();
-		workerVT = new Vector();
+//		ArrayList mainBVT = new ArrayList();
+//		ArrayList workerVT = new ArrayList();
 		
-		mainBItem = new Vector();
-		mainBItem.addElement("SCV");
+		ArrayList mainBItem = new ArrayList();
+		mainBItem.add("SCV");
 		
-		workerItem = new Vector();
-		workerItem.addElement("놀기");
-		workerItem.addElement("미네랄");
-		workerItem.addElement("가스");
-		workerItem.addElement("CommandCenter");
+		ArrayList workerItem = new ArrayList();
+		workerItem.add("놀기");
+		workerItem.add("미네랄");
+		workerItem.add("가스");
+		workerItem.add("CommandCenter");
 		
-		mainBVT.addElement(new myCommandCenter(ui)); //최초 커맨드 건물 기본 하나
+		mainBVT.add(new myCommandCenter(ui)); //최초 커맨드 건물 기본 하나
 		
 		for(int i=0;i<4;i++){//최초 SCV기본 4명
-			workerVT.addElement(new mySCV(ui));
+			workerVT.add(new mySCV(ui));
 		}
 		
 		setUpgrade(0);//최초 업그레이드 파워 0

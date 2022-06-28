@@ -1,13 +1,13 @@
-package day2_mission;
+package day2_mission22;
 import java.util.ArrayList;
+import java.util.Vector;
 import javax.swing.ImageIcon;
 
+abstract class Tribe {
+	StarUI ui;
 
-abstract class myTribe {
-	myStarUI ui;
-
-	ImageIcon mainBIC, workerIC; // 라벨 이미지
-	ImageIcon buildingface, workerface; // 각 페이스 이미지
+	ImageIcon mainBIC, building1IC, building2IC, building3IC, workerIC, attacker1IC, attacker2IC; // 라벨 이미지
+	ImageIcon buildingface, workerface, attacker1face, attacker2face; // 각 페이스 이미지
 	protected int mineral; //미네랄
 	protected int gas; //가스
 	protected int unit; //총 유닛 갯수
@@ -16,23 +16,30 @@ abstract class myTribe {
 	protected int upgradepower; //업그레이드 파워		
 	protected String tribe; //종족이름	
 	protected String mainbuildingName; //본건물 이름
+//	protected String building1Name; //공격생산건물 1
+//	protected String building2Name; //공격생산건물 2
+//	protected String building3Name; //건물3
 	protected String workerName; //일꾼이름
-	
+//	protected String attacker1Name; //공격유닛1
+//	protected String attacker2Name; //공격유닛2	
 	//유닛 및 건물 설명 부분//
 	protected String mainBdesc;
+	protected String building1desc;
+	protected String building2desc;
+	protected String building3desc;
 	protected String workerdesc;
+	protected String attacker1desc;
+	protected String attacker2desc;	
 	protected int workerPower;//일꾼 공격력
 	protected int workerEnergy;//일꾼 에너지 정보
 	protected int mainBEnergy;//메인건물 에너지 정보
 	
-	ArrayList mainBVT = new ArrayList(); //메인건물 객체 담는곳
-	ArrayList workerVT = new ArrayList(); // 일꾼객체
-	
+	ArrayList mainBVT; // 메인건물 객체 담는곳
+	ArrayList workerVT; // 일꾼객체
 	/////////각 건물 및 유닛 아이템(콤보박스)정보 담는 벡터//////
 	ArrayList mainBItem;
 	ArrayList workerItem;
-
-	myTribe(myStarUI ui){
+	Tribe(StarUI ui){
 		this.ui = ui;
 		mineral=100;
 		gas=100;
@@ -95,6 +102,5 @@ abstract class myTribe {
 	}
 	public int getWorkerpower(){
 		return workerPower;
-	}	
+	}
 }
-

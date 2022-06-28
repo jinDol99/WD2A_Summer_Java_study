@@ -1,21 +1,16 @@
-package day2_mission;
+package day2_mission22;
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.tree.*;
-
-//import day2_mission22.StarObject;
-
 import javax.swing.table.*;
 import javax.swing.border.*;
 
-
-class myStarUI extends JFrame implements Runnable, MouseListener, ActionListener, ListSelectionListener
+class StarUI extends JFrame implements Runnable, MouseListener, ActionListener, ListSelectionListener
 {
-	myStarUI enemy;//적을 가리킴
+	StarUI enemy;//적을 가리킴
 	JPanel panel; //전체적인 패널
 	JPanel jPanel1;//미네랄정보 패널
 	JPanel jPanel2;//건물 정보 패널
@@ -58,18 +53,17 @@ class myStarUI extends JFrame implements Runnable, MouseListener, ActionListener
 	
 	Object[] DefOB; //테이블 값 변경시켜주기위한 오브젝트
 
-	myTribe clan; //선택된 종족 참조변수
+	Tribe clan; //선택된 종족 참조변수
 	Thread progressing; //진행상태 바와 에너지 바를 갱신해주기위한 쓰레드
 	int rowcnt; //선택된 행 변수(테이블)
 	int job; // 쓰레드의 작업 컨트롤 변수
-	
-	
-	public myStarUI(int mytribe, String User)
+	public StarUI(int tribe, String User)
 	{
-		switch(mytribe){
+		switch(tribe){
 		case 0:
-			setClan(new myTerran(this));
-			break;		
+			setClan(new Terran(this));
+			break;
+				
 		}
 		
 		UIManager.put("swing.boldMetal", Boolean.FALSE);
@@ -101,10 +95,10 @@ class myStarUI extends JFrame implements Runnable, MouseListener, ActionListener
 		
 		
 	}
-	public void setClan(myTribe clan){
+	public void setClan(Tribe clan){
 		this.clan = clan;
 	}
-	public void setEnemy(myStarUI enemy) //적 설정
+	public void setEnemy(StarUI enemy) //적 설정
 	{
 		this.enemy=enemy;
 				
@@ -309,10 +303,10 @@ class myStarUI extends JFrame implements Runnable, MouseListener, ActionListener
 		U_infoTB_model_vector.addElement("이름");
 		U_infoTB_model_vector.addElement("상태");
 		U_infoTB_DTM = new DefaultTableModel(U_infoTB_model_vector, 0){ //셀편집안되게 처리
-			public boolean isCellEditable(int row,int col){
-				return false;
-			}
-		};
+			   public boolean isCellEditable(int row,int col){
+				    return false;
+				   }
+				  };
 		U_infoTB = new JTable(U_infoTB_DTM);
 		U_infoTB.setOpaque(true);
 		U_infoTB_scroll = new JScrollPane(U_infoTB);
@@ -332,41 +326,21 @@ class myStarUI extends JFrame implements Runnable, MouseListener, ActionListener
 		jPanel5.add(U_selectBT);
 	}
 	
-/*	synchronized public void setTB(Vector vt){ // 다중 테이블 선택시 여러개의 스레드가(예 일꾼스레드)동시에 접근하여 테이블수정하는것을 막음.
-		DefOB = new Object[2];
-		myStarObject so;
-		
-		while(U_infoTB_DTM.getRowCount()>=1){
-			U_infoTB_DTM.removeRow(0);
-		}
-		for(int index=0;index<vt.size();index++){
-			so=(myStarObject)(vt.elementAt(index));
-			DefOB[0]=so.getName();
-			DefOB[1]=so.getCondition();
-			
-			U_infoTB_DTM.insertRow(index, DefOB);
-		}
-	}*/
-	
-	
 	synchronized public void setTB(ArrayList vt){ // 다중 테이블 선택시 여러개의 스레드가(예 일꾼스레드)동시에 접근하여 테이블수정하는것을 막음.
 		DefOB = new Object[2];
-		myStarObject so;
+		StarObject so;
 		
 		while(U_infoTB_DTM.getRowCount()>=1){
 			U_infoTB_DTM.removeRow(0);
 		}
 		for(int index=0;index<vt.size();index++){
-			so=(myStarObject)(vt.get(index));
+			so=(StarObject)(vt.get(index));
 			DefOB[0]=so.getName();
 			DefOB[1]=so.getCondition();
 			
 			U_infoTB_DTM.insertRow(index, DefOB);
 		}
 	}
-	
-	
-	
 	public void setMessage(String msg){
 		for(int i = 0; i<4;i++){
 			U_message.setText(msg);
@@ -393,7 +367,6 @@ class myStarUI extends JFrame implements Runnable, MouseListener, ActionListener
 			for(int i=0;i<clan.mainBItem.size();i++)
 				cb.addItem(clan.mainBItem.get(i));
 		}
-		
 		if(me.getSource()==U_BU[1]){
 			job=0;
 			U_desc.setText(clan.workerdesc);
@@ -442,10 +415,10 @@ class myStarUI extends JFrame implements Runnable, MouseListener, ActionListener
 		int index[];
 		index=U_infoTB.getSelectedRows(); //다중 선택 행 번호 반환
 		for(int i=0;i<index.length;i++){
-			((myStarObject)(vt.get(index[i]))).go.interrupt(); //하던일 중지 예외 발생시킴 스레드 죽임
-			((myStarObject)(vt.get(index[i]))).setFlag(false); //하던일 중지 시킨다음
-			((myStarObject)(vt.get(index[i]))).setJob(job); //새로운 작업 부여
-			((myStarObject)(vt.get(index[i]))).getThread().resume();  //시작
+			((StarObject)(vt.get(index[i]))).go.interrupt(); //하던일 중지 예외 발생시킴 스레드 죽임
+			((StarObject)(vt.get(index[i]))).setFlag(false); //하던일 중지 시킨다음
+			((StarObject)(vt.get(index[i]))).setJob(job); //새로운 작업 부여
+			((StarObject)(vt.get(index[i]))).getThread().resume();  //시작
 		}
 	}
 	@SuppressWarnings("deprecation")
@@ -463,6 +436,10 @@ class myStarUI extends JFrame implements Runnable, MouseListener, ActionListener
 				else if((String)cb.getSelectedItem()==clan.getMainBName()){					
 					ChangeJob(3,clan.workerVT);
 				}
+
+//				else if((String)cb.getSelectedItem()=="공격하기"){
+//					ChangeJob(7,clan.workerVT);
+//				}
 			}
 			
 			if(U_name.getText()==clan.getMainBName()){
@@ -470,6 +447,7 @@ class myStarUI extends JFrame implements Runnable, MouseListener, ActionListener
 					ChangeJob(1,clan.mainBVT);
 				}
 			}
+
 		}
 	}
 	public void setInfo(String name, String power, String count){
@@ -501,25 +479,25 @@ class myStarUI extends JFrame implements Runnable, MouseListener, ActionListener
 				try {
 					Thread.sleep(10);
 				} catch (InterruptedException e) {}
-				break;						
-			}
+				break;			
+			}			
 		}
 	}
 	public void setEnergy(ArrayList vt){
-		myStarObject so;
+		StarObject so;
 		if(vt.size()!=0){
 			try{
-			so=(myStarObject)(vt.get(rowcnt));
+			so=(StarObject)(vt.get(rowcnt));
 			U_energyPB.setValue(so.energy);
 			}catch(Exception e){}
 			
 		}
 	}
 	public void setProgress(ArrayList vt){
-		myStarObject so;
+		StarObject so;
 		if(vt.size()!=0){
 			try{
-				so=(myStarObject)(vt.get(getRowcnt()));
+				so=(StarObject)(vt.get(getRowcnt()));
 				U_progressPB.setValue(so.progress);
 			}
 			catch(Exception e){}
@@ -534,10 +512,11 @@ class myStarUI extends JFrame implements Runnable, MouseListener, ActionListener
 			if(U_infoTB_DTM.getValueAt(0, 0)==clan.getMainBName()){ //본건물 선택되었을 경우
 				job=1; //프로그레스바 스레드 돌리기
 			}
+
 			if(U_infoTB_DTM.getValueAt(0, 0)==clan.getWorkerName()){//일꾼 선택되었을경우
 				job=5;	
 			}
-			
+
 		}
 		else{
 			U_progressPB.setValue(0);

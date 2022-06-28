@@ -1,15 +1,13 @@
-package day2_mission;
+package day2_mission22;
+import java.util.Vector;
 
-import java.util.ArrayList;
-
-
-abstract class myTerranUnit extends myStarObject implements myIStarUnit {
+abstract class TerranUnit extends StarObject implements IStarUnit {
 	protected int power;
-	myTerranUnit(myStarUI ui) {
+	TerranUnit(StarUI ui) {
 		super(ui);
 		// TODO Auto-generated constructor stub
 	}	
-	public void attack(int power,int attackspeed,ArrayList vt,myStarObject target) { //공격한 유닛의 파워, 공격당할 그릇, 공격 당할 타겟
+	public void attack(int power,int attackspeed,Vector vt,StarObject target) { //공격한 유닛의 파워, 공격당할 그릇, 공격 당할 타겟
 		while(true){
 			target.energy=target.getEnergy()- power; //타겟의 에너지에서 나의 파워만큼 깍는다
 			try {
@@ -18,7 +16,7 @@ abstract class myTerranUnit extends myStarObject implements myIStarUnit {
 			try{
 				if(target.energy<=0){ //타겟의 피가 0이하가 될때까지 공격
 					target.go.suspend(); //하던일 정지시키고
-					vt.remove(target); //타겟의 피가 0이되면 제거
+					vt.removeElement(target); //타겟의 피가 0이되면 제거
 					break;
 					
 				}

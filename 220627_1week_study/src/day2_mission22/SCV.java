@@ -1,18 +1,15 @@
-package day2_mission;
-
+package day2_mission22;
 import java.awt.event.ActionEvent;
 import java.util.*;
-
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
-
-class mySCV extends myTerranUnit implements Runnable{
+class SCV extends TerranUnit implements Runnable{
 	static int cost=50; //비용
 	static int gascost=0; //가스비용
 	static int buildtime = 70;
 	static int attackspeed = 600;
-	mySCV(myStarUI ui){
+	SCV(StarUI ui){
 		super(ui);
 		name = "SCV";
 		energy=60;
@@ -20,12 +17,11 @@ class mySCV extends myTerranUnit implements Runnable{
 		work=true;
 		flag=true;
 		progress=0;
-		ArrayList con = new ArrayList();
+		con = new ArrayList();
 		con.add("노는중");
 		con.add("미네랄");
 		con.add("가스");
 		con.add("커맨드");
-		con.add("공격");
 		condi=(String) con.get(0);
 		go=new Thread(this);
 		go.start();
@@ -33,6 +29,7 @@ class mySCV extends myTerranUnit implements Runnable{
 		
 	public void run(){
 		while(true){
+
 			switch(job){
 			case 0:
 				flag=true;
@@ -50,27 +47,10 @@ class mySCV extends myTerranUnit implements Runnable{
 				flag=true;
 				makeMainB();
 				break;
-			case 7:
-				flag=true;
-				condi=(String)getCondition(7);
-				int rand;
-				ui.setTB(ui.clan.workerVT);
-				while(true){ 			
-					if(ui.enemy.clan.getBuilding()==0||flag==false){ //건물이 다 업어지면
-						job=0; //공격 중지
-						condi=(String)getCondition(0);
-						if(ui.enemy.U_name.getText()==ui.enemy.clan.getWorkerName())
-							ui.setTB(ui.enemy.clan.workerVT);
-						ui.endMessage("승리하였습니다.");
-						ui.enemy.endMessage("패배하였습니다.");
-						System.exit(0); //게임 종료
-						break;
-					}
-				}
-				if(flag==false)
-					break;
-				
-				break;
+			
+			
+			
+			
 			}
 		}
 	}
@@ -112,14 +92,14 @@ class mySCV extends myTerranUnit implements Runnable{
 		}		
 	}
 	void makeMainB(){
-		if(ui.clan.getMineral()>=myCommandCenter.cost){
+		if(ui.clan.getMineral()>=CommandCenter.cost){
 			condi=(String)getCondition(3);
-			ui.clan.setMineral(-myCommandCenter.cost);
+			ui.clan.setMineral(-CommandCenter.cost);
 			ui.U_mineral.setText(String.valueOf(ui.clan.getMineral()));
 			ui.setTB(ui.clan.workerVT);
-			progressing(myCommandCenter.buildtime);
-			ui.clan.mainBVT.add(new myCommandCenter(ui));
-			ui.clan.setBuilding(ui.clan.mainBVT.size());
+			progressing(CommandCenter.buildtime);
+			ui.clan.mainBVT.add(new CommandCenter(ui));
+//			ui.clan.setBuilding(ui.clan.mainBVT.size());
 			condi=(String)getCondition(0);
 			if(ui.U_name.getText()==ui.clan.getWorkerName())
 				ui.setTB(ui.clan.workerVT);
@@ -132,5 +112,5 @@ class mySCV extends myTerranUnit implements Runnable{
 		progress=0;
 		job=0;
 	}
-}
 
+}

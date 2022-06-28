@@ -1,13 +1,11 @@
-package day2_mission;
-
-import java.util.Random;
+package day2_mission22;
 import java.util.ArrayList;
-
+import java.util.Random;
+import java.util.Vector;
 import javax.swing.ImageIcon;
 
-
-abstract class myStarObject {
-	myStarUI ui;
+abstract class StarObject {
+	StarUI ui;
 
 	Random random = new Random();
 	protected String condi;	 //상태정보를 담는 변수
@@ -23,9 +21,9 @@ abstract class myStarObject {
 	
 	
 	Thread go;//스레드 변수
-	myStarObject target; //상대방 타겟
-	ArrayList vt; // 자신의 객체 반환
-	myStarObject(myStarUI ui){
+	StarObject target; //상대방 타겟
+	Vector vt; // 자신의 객체 반환
+	StarObject(StarUI ui){
 		this.ui = ui;
 	}
 	public Object getCondition(int i){ //상태가져오기
@@ -61,4 +59,5 @@ abstract class myStarObject {
 	public int getJob() {
 		return job;
 	}
+	
 }

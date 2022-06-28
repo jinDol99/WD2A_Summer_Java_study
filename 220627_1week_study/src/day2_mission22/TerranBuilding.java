@@ -1,8 +1,8 @@
-package day2_mission;
-import java.util.ArrayList;
+package day2_mission22;
+import java.util.Vector;
 
-abstract class myTerranBuilding extends myStarObject implements myIStarBuilding  {
-	myTerranBuilding(myStarUI ui) {
+abstract class TerranBuilding extends StarObject implements IStarBuilding  {
+	TerranBuilding(StarUI ui) {
 		super(ui);
 		// TODO Auto-generated constructor stub
 	}
@@ -22,4 +22,3 @@ abstract class myTerranBuilding extends myStarObject implements myIStarBuilding 
 		}
 	}
 }
-

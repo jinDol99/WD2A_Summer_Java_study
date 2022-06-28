@@ -1,21 +1,20 @@
-package day2_mission;
+package day2_mission22;
 import java.awt.Graphics;
 import java.util.*;
-
 import javax.swing.ImageIcon;
 
-class myCommandCenter extends myTerranBuilding implements Runnable{
-	static int cost=400;
+class CommandCenter extends TerranBuilding  implements Runnable{
+	static int cost=10;
 	static int gascost=0;
 	static int buildtime=500;
-	myCommandCenter(myStarUI ui){
+	CommandCenter(StarUI ui){
 		super(ui);
-		name = "myCommandCenter";
+		name = "CommandCenter";
 		flag=true;
 		work=true;
 		progress=0;
 		energy=1500;
-		ArrayList con = new ArrayList();
+		con = new ArrayList();
 		con.add("노는중");
 		con.add("생산중");
 		condi=(String)con.get(0);
@@ -40,14 +39,14 @@ class myCommandCenter extends myTerranBuilding implements Runnable{
    
 	
 	public void makeUnit(){
-		if(ui.clan.getMineral()>=mySCV.cost){
+		if(ui.clan.getMineral()>=SCV.cost){
 			if(ui.clan.getMaxunit()>ui.clan.getUnit()){ //최대유닛보다 현재 유닛이 적을 경우
 				condi=(String)con.get(1);
-				ui.clan.setMineral(-mySCV.cost);
+				ui.clan.setMineral(-SCV.cost);
 				ui.U_mineral.setText(String.valueOf(ui.clan.getMineral()));
 				ui.setTB(ui.clan.mainBVT);
-				progressing(mySCV.buildtime);
-				ui.clan.workerVT.add(new mySCV(ui));
+				progressing(SCV.buildtime);
+				ui.clan.workerVT.add(new SCV(ui));
 				ui.clan.setUnit(ui.clan.workerVT.size());
 				ui.U_unit.setText(String.valueOf(ui.clan.getUnit()));
 				condi=(String)con.get(0);
