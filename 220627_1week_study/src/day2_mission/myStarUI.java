@@ -22,7 +22,7 @@ class myStarUI extends JFrame implements Runnable, MouseListener, ActionListener
 	JLabel U_gasLB; //가스아이콘
 	JLabel U_unitLB; //유닛정보 아이콘
 	
-	JLabel[] U_BU = new JLabel[7]; //건물 및 유닛 라벨
+	JLabel[] U_BU = new JLabel[2]; //건물 및 유닛 라벨
 			
 	JLabel U_nameLB; //이름
 	JLabel U_powerLB; //공격력
@@ -86,7 +86,7 @@ class myStarUI extends JFrame implements Runnable, MouseListener, ActionListener
 		makeComponent();
 		getContentPane().add(panel, BorderLayout.CENTER);
 		
-		for(int i=0;i<7;i++){
+		for(int i=0;i<2;i++){
 			U_BU[i].addMouseListener(this);
 		}
 		U_selectBT.addActionListener(this);
@@ -159,12 +159,12 @@ class myStarUI extends JFrame implements Runnable, MouseListener, ActionListener
 		U_BU[0].setOpaque(false);
 		jPanel2.add(U_BU[0]);
 				
-		U_BU[4] = new JLabel();
-		U_BU[4].setIcon(clan.workerIC);
-		U_BU[4].setText(clan.getWorkerName());
-		U_BU[4].setOpaque(false);
-		U_BU[4].setBounds(50, 40, 57, 57);
-		jPanel3.add(U_BU[4]);
+		U_BU[1] = new JLabel();
+		U_BU[1].setIcon(clan.workerIC);
+		U_BU[1].setText(clan.getWorkerName());
+		U_BU[1].setOpaque(false);
+		U_BU[1].setBounds(50, 40, 57, 57);
+		jPanel3.add(U_BU[1]);
 
 		U_nameLB = new JLabel();
 		U_nameLB.setText("이름");
