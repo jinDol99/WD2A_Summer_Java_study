@@ -57,6 +57,7 @@ class StarUI extends JFrame implements Runnable, MouseListener, ActionListener, 
 	Thread progressing; //진행상태 바와 에너지 바를 갱신해주기위한 쓰레드
 	int rowcnt; //선택된 행 변수(테이블)
 	int job; // 쓰레드의 작업 컨트롤 변수
+	
 	public StarUI(int tribe, String User)
 	{
 		switch(tribe){
