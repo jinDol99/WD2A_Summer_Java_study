@@ -467,8 +467,8 @@ class StarUI extends JFrame implements Runnable, MouseListener, ActionListener, 
 		
 		if(me.getSource()==U_BU[2]){
 			job=0;
-			U_desc.setText(clan.worker2desc);
-			U_face.setIcon(clan.worker2face);
+			U_desc.setText(clan.workerdesc);
+			U_face.setIcon(clan.workerface);
 			setInfo(clan.getWorkerName(), String.valueOf(clan.getWorkerpower())+" + "+String.valueOf(clan.getUpgrade()), String.valueOf(clan.workerVT.size()));
 			setTB(clan.workerVT);
 			U_energyPB.setValue(0);
