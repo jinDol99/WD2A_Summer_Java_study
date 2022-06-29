@@ -22,6 +22,7 @@ abstract class Tribe {
 	protected String workerName; //일꾼이름
 //	protected String attacker1Name; //공격유닛1
 //	protected String attacker2Name; //공격유닛2	
+
 	//유닛 및 건물 설명 부분//
 	protected String mainBdesc;
 	protected String building1desc;

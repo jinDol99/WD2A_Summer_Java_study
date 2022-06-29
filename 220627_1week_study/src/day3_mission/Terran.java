@@ -24,25 +24,25 @@ class Terran extends Tribe {
 		mainBEnergy=1500;
 		//////////유닛 및 건물 간략한 설명/////
 		mainBdesc = "Terran Command Center";
-		building1desc = "Terran Barracks";
-		building2desc = "Terran Factory";
-		building3desc = "Terran Supply Depot";
+//		building1desc = "Terran Barracks";
+//		building2desc = "Terran Factory";
+//		building3desc = "Terran Supply Depot";
 		workerdesc = "Terran SCV";
-		attacker1desc = "Terran Marine";
-		attacker2desc = "Terran Siege Tank";
+//		attacker1desc = "Terran Marine";
+//		attacker2desc = "Terran Siege Tank";
 		///////////건물및 유닛 이미지//////////////
 		mainBIC = new ImageIcon("img/terranmainB.jpg");
-		building1IC = new ImageIcon("img/terranbuilding1.jpg");
-		building2IC = new ImageIcon("img/terranbuilding2.jpg");
-		building3IC = new ImageIcon("img/terranbuilding3.jpg");
+//		building1IC = new ImageIcon("img/terranbuilding1.jpg");
+//		building2IC = new ImageIcon("img/terranbuilding2.jpg");
+//		building3IC = new ImageIcon("img/terranbuilding3.jpg");
 		workerIC = new ImageIcon("img/terranworker.jpg");
-		attacker1IC = new ImageIcon("img/terranattacker1.jpg");
-		attacker2IC = new ImageIcon("img/terranattacker2.jpg");
+//		attacker1IC = new ImageIcon("img/terranattacker1.jpg");
+//		attacker2IC = new ImageIcon("img/terranattacker2.jpg");
 		//////////건물 및 유닛 페이스 이미지/////////////
 		buildingface = new ImageIcon("img/terranbuildingface.jpg");
 		workerface =new ImageIcon("img/terranworkerface.jpg");
-		attacker1face = new ImageIcon("img/terranattacker1face.jpg");
-		attacker2face = new ImageIcon("img/terranattacker2face.jpg");
+//		attacker1face = new ImageIcon("img/terranattacker1face.jpg");
+//		attacker2face = new ImageIcon("img/terranattacker2face.jpg");
 		
 		
 		///////////건물 및 유닛 아이템(행동)정보 초기화///////////	
